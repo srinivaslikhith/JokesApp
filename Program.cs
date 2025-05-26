@@ -26,9 +26,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
+    pattern: "{controller=Auth}/{action=Login}/{id?}");
 
 using var scope = app.Services.CreateScope();
 var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -42,3 +40,7 @@ if (!db.Jokes.Any())
     );
     db.SaveChanges();
 }
+
+app.Run();
+
+

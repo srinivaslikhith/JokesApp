@@ -1,0 +1,29 @@
+@model List<JokesApp.Models.Joke>
+
+@{
+    ViewData["Title"] = "Joke List";
+    string searchTerm = ViewBag.SearchTerm as string ?? "";
+}
+
+<h2>All Jokes</h2>
+
+<form method="get">
+    <input type="text" name="searchTerm" placeholder="Search jokes..." value="@searchTerm" />
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Joke</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var joke in Model)
+        {
+            <tr>
+                <td>@joke.Question</td>
+            </tr>
+        }
+    </tbody>
+</table>
